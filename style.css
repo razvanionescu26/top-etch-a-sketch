@@ -4,20 +4,34 @@
     box-sizing: border-box;
 }
 
+#button-wrapper, #etch-a-sketch {
+    display: flex;
+    width: 650px;
+    margin: 40px auto;
+}
+
+#etch-a-sketch, .box {
+    border: 1px solid black;
+}
+
+#button-wrapper {
+    justify-content: center;
+    gap: 10px;
+}
+
+#button-wrapper button {
+    padding: 10px;
+}
+
 .box {
     width: 32px;
     height: 32px;
-    border: 1px solid black;
     flex: auto;
 }
 
 #etch-a-sketch {
-    display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    border: 1px solid black;
-    width: 650px;
     height: 650px;
     padding: 20px;
-    margin: 50px auto;
 }
