@@ -31,7 +31,5 @@
 
 #etch-a-sketch {
     flex-wrap: wrap;
-    gap: 5px;
     height: 650px;
-    padding: 20px;
 }

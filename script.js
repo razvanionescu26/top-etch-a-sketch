@@ -1,12 +1,20 @@
-function createGrid() {
-    const gridSection = document.querySelector("#etch-a-sketch");
-    
-    for (let boxCount = 0; boxCount < 256; ++boxCount) {
-        gridSection.appendChild(createGridBox());
+const gridSection = document.querySelector("#etch-a-sketch");
+
+// clientWidth returns size by adding content and padding
+const GRID_SECTION_SIZE = gridSection.clientWidth;
+
+console.log(GRID_SECTION_SIZE);
+
+function createGrid(gridSize) {    
+    const boxSize = GRID_SECTION_SIZE / gridSize;
+
+    for (let boxCount = 0; boxCount < gridSize ** 2; ++boxCount) {
+        gridSection.appendChild(createGridBox(boxSize));
     }
 
-    function createGridBox() {
+    function createGridBox(boxSize) {
         const squareDiv = document.createElement("div");
+        squareDiv.style.width = squareDiv.style.height = `${boxSize}px`;
         squareDiv.classList.toggle("box");
         squareDiv.addEventListener("mouseover", changeGridColor);
         return squareDiv;
@@ -23,11 +31,10 @@ function makeResetButton() {
     resetButton.addEventListener("click", resetGrid);
 
     function resetGrid() {
-        const gridSection = document.querySelector("#etch-a-sketch");
         const gridBoxes = gridSection.querySelectorAll(".box");
         gridBoxes.forEach((box) => {box.style.backgroundColor = "white"});
     }
 }
 
 makeResetButton();
-createGrid();
+createGrid(16);
