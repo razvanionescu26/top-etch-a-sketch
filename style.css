@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #A2AEBB;
+}
+
 #button-wrapper, #etch-a-sketch {
     display: flex;
     width: 650px;
@@ -11,7 +15,7 @@
 }
 
 #etch-a-sketch, .box {
-    border: 1px solid black;
+    border: 1px solid #1A1E23;
 }
 
 #button-wrapper {
@@ -21,6 +25,10 @@
 
 #button-wrapper button {
     padding: 10px;
+}
+
+.box {
+    background-color: white;
 }
 
 #etch-a-sketch {
