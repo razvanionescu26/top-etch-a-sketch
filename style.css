@@ -23,12 +23,6 @@
     padding: 10px;
 }
 
-.box {
-    width: 32px;
-    height: 32px;
-    flex: auto;
-}
-
 #etch-a-sketch {
     flex-wrap: wrap;
     height: 650px;
