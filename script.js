@@ -1,9 +1,6 @@
 const gridSection = document.querySelector("#etch-a-sketch");
 
-// clientWidth returns size by adding content and padding
 const GRID_SECTION_SIZE = gridSection.clientWidth;
-
-console.log(GRID_SECTION_SIZE);
 
 function createGrid(gridSize) {    
     const boxSize = GRID_SECTION_SIZE / gridSize;
@@ -18,12 +15,12 @@ function createGrid(gridSize) {
         squareDiv.classList.toggle("box");
         squareDiv.addEventListener("mouseover", changeGridColor);
         return squareDiv;
-    }
+    };
 
     function changeGridColor(event) {
         const target = event.target;
         target.style.backgroundColor = "black";
-    }
+    };
 }
 
 function makeResetButton() {
@@ -32,9 +29,32 @@ function makeResetButton() {
 
     function resetGrid() {
         const gridBoxes = gridSection.querySelectorAll(".box");
-        gridBoxes.forEach((box) => {box.style.backgroundColor = "white"});
-    }
+        gridBoxes.forEach((box) => {
+            box.style.backgroundColor = "white"
+        });
+    };
+}
+
+function makeResizeButton() {
+    const resizeButton = document.querySelector("#resize-button");
+    resizeButton.addEventListener("click", resizeGrid);
+
+    function clearGrid() {
+        while (gridSection.firstElementChild) {
+            gridSection.removeChild(gridSection.lastElementChild);
+        }
+    };
+
+    function resizeGrid() {
+        clearGrid();
+        let size = +prompt("Enter a size for the new grid. Must be between 2 and 100");
+        while (isNaN(size) || size < 2 || size > 100) {
+            size = +prompt(`Invalid size ${size}. Enter a valid value.`);
+        }
+        createGrid(size);
+    };
 }
 
 makeResetButton();
+makeResizeButton();
 createGrid(16);
